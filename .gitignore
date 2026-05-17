@@ -22,10 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-# Ambientes locais e chaves
-.env
-.env.local
-.env.*.local
-
-# Pastas internas de ferramentas (opcional, para não subir dados do agente)
-.specify/memory/
