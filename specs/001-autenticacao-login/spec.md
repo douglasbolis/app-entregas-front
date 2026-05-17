@@ -37,7 +37,7 @@ Como um entregador do Maré Manguinhos, eu quero ter a opção de recuperar minh
 **Acceptance Scenarios**:
 
 1. **Given** que o entregador está na tela de login, **When** ele clica em "Esqueci minha senha", **Then** ele é redirecionado para uma tela de recuperação de senha.
-2. **Given** que o entregador está na tela de recuperação de senha, **When** ele insere seu e-mail ou número de telefone cadastrado e clica em "Recuperar Senha", **Then** uma mensagem de sucesso é exibida informando que as instruções foram enviadas e ele é redirecionado para a tela de login.
+2. **Given** que o entregador está na tela de recuperação de senha, **When** ele aciona a opção de recuperação, **Then** ele é instruído a entrar em contato com o suporte para obter assistência e é redirecionado para a tela de login.
 3. **Given** que o entregador está na tela de recuperação de senha, **When** ele insere um e-mail ou número de telefone não cadastrado e clica em "Recuperar Senha", **Then** uma mensagem de erro é exibida informando que o e-mail/número não foi encontrado.
 
 ---
@@ -56,10 +56,10 @@ Como um entregador do Maré Manguinhos, eu quero ter a opção de recuperar minh
 - **FR-002**: O sistema DEVE validar as credenciais do entregador com o backend.
 - **FR-003**: O sistema DEVE redirecionar o entregador para o dashboard de entregas após login bem-sucedido.
 - **FR-004**: O sistema DEVE exibir mensagens de erro claras para credenciais inválidas ou campos obrigatórios não preenchidos.
-- **FR-005**: O sistema DEVE permitir que o entregador solicite a recuperação de senha, via SMS.
+- **FR-005**: O sistema DEVE instruir o entregador a entrar em contato com o suporte para recuperação de senha.
 - **FR-006**: O sistema DEVE exibir uma tela de recuperação de senha com campo para inserção do identificador (e-mail ou CPF) do entregador.
-- **FR-007**: O sistema DEVE enviar as instruções de recuperação de senha via SMS após a solicitação bem-sucedida.
-- **FR-008**: O sistema DEVE proteger as informações de senha do entregador, utilizando criptografia e práticas seguras de armazenamento.
+- **FR-007**: Ao solicitar recuperação de senha, o sistema DEVE fornecer informações claras sobre como contatar o suporte para obter assistência.
+- **FR-008**: O sistema DEVE garantir que a comunicação de credenciais do entregador com o backend seja segura, utilizando HTTPS para transmissão.
 
 ### Key Entities (include if feature involves data)
 
