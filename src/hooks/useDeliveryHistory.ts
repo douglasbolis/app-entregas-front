@@ -1,8 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { historyService } from '../services/api/historyService';
-import { Delivery } from '../types/delivery';
+import type { Delivery, SortBy } from '../types/delivery';
 
-type SortBy = 'status' | 'clientName' | 'none'; // Example sorting options
 type FilterBy = 'all' | 'delivered' | 'address-not-found' | 'client-not-found'; // Example filtering options
 
 export function useDeliveryHistory(sortBy: SortBy = 'none', filterBy: FilterBy = 'all') {

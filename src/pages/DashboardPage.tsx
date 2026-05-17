@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { usePendingDeliveries } from '../hooks/usePendingDeliveries';
 import DeliveryListItem from '../components/DeliveryListItem';
 import { useNavigate } from 'react-router-dom';
+import type { SortBy } from '../types/delivery';
 
-type SortBy = 'status' | 'clientName' | 'none';
 type FilterBy = 'all' | 'pending' | 'out-for-delivery'; // Dashboard only shows pending/out-for-delivery
 
 const DashboardPage: React.FC = () => {

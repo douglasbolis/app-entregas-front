@@ -1,35 +1,13 @@
+import { useCallback, useEffect, useState } from "react";
+import type { Delivery, SortBy } from "../types/delivery";
+import { deliveryService } from "../services/api/deliveryService";
+
 /**
  * Custom hook for managing pending deliveries state, including fetching, sorting, and refresh functionality.
  * @param {SortBy} [sortBy='none'] - The criteria to sort deliveries by.
  * @returns {{ deliveries: Delivery[], loading: boolean, error: string | null, fetchPendingDeliveries: () => Promise<void>, pullToRefresh: () => void }}
  */
-export function usePendingDeliveries(sortBy: SortBy = 'none') {
-  const [deliveries, setDeliveries] = useState<Delivery[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  /**
-   * Sorts an array of deliveries based on the provided sortBy criteria.
-   * @param {Delivery[]} deliveriesToSort - The array of deliveries to sort.
-   * @returns {Delivery[]} The sorted array of deliveries.
-   */
-  const sortDeliveries = useCallback((deliveriesToSort: Delivery[]): Delivery[] => {
-    if (sortBy === 'none') return deliveriesToSort;
-
-    return [...deliveriesToSort].sort((a, b) => {
-      if (sortBy === 'status') {
-        return a.status.localeCompare(b.status);
-      } else if (sortBy === 'clientName') {
-        return a.clientName.localeCompare(b.clientName);
-      }
-      return 0;
-    });
-  }, [sortBy]);
-
-  /**
-   * Fetches pending deliveries from the API, sorts them, and updates the state.
-   */
-  const fetchPendingDeliveries = useCallback(async () => {
+export function usePendingDeliveries(sortBy: SortBy = 'none', _filterBy: string) {
   const [deliveries, setDeliveries] = useState<Delivery[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);

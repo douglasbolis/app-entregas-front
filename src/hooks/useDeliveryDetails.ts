@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { deliveryService } from '../services/api/deliveryService';
-import { Delivery } from '../types/delivery';
+import type { Delivery } from '../types/delivery';
 
 export function useDeliveryDetails(deliveryId: string) {
   const [delivery, setDelivery] = useState<Delivery | null>(null);

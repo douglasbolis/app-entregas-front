@@ -1,3 +1,6 @@
+import type { Delivery } from '../../types/delivery';
+import api from './base';
+
 /**
  * Service for interacting with delivery-related API endpoints.
  */

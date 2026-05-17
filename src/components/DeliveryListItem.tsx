@@ -1,5 +1,5 @@
 import React from 'react';
-import { Delivery } from '../types/delivery';
+import type { Delivery } from '../types/delivery';
 
 interface DeliveryListItemProps {
   delivery: Delivery;

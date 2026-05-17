@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useDeliveryHistory } from '../hooks/useDeliveryHistory';
 import DeliveryListItem from '../components/DeliveryListItem';
 import { useNavigate } from 'react-router-dom';
-import { Delivery } from '../types/delivery'; // Assuming Delivery type is here
+import type { SortBy } from '../types/delivery';
 
-type SortBy = 'status' | 'clientName' | 'none';
 type FilterBy = 'all' | 'delivered' | 'address-not-found' | 'client-not-found';
 
 const HistoryPage: React.FC = () => {

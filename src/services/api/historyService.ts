@@ -1,5 +1,5 @@
 import api from './base';
-import { Delivery } from '../../types/delivery';
+import type { Delivery } from '../../types/delivery';
 
 export const historyService = {
   getDeliveryHistory: async (): Promise<Delivery[]> => {

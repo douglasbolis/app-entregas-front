@@ -1,6 +1,6 @@
 import { useAuthStore } from '../stores/authStore';
 import api from '../services/api/base';
-import { AuthResponse } from '../types/auth';
+import type { AuthResponse } from '../types/auth';
 
 interface AuthCredentials {
   username: string;

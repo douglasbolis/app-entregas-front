@@ -1,3 +1,5 @@
+export type SortBy = 'status' | 'clientName' | 'none'; // Example sorting options
+
 /**
  * Represents a single delivery item with its associated details.
  */
