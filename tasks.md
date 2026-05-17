@@ -39,104 +39,104 @@ O MVP inicial se concentrará em:
 - [ ] T004 Instalar dependências de persistência de dados (localStorage, se necessário alguma lib específica ou abstração).
 - [ ] T005 [P] Instalar dependências de teste: `vitest`, `@testing-library/react`, `@testing-library/jest-dom`.
 - [ ] T006 [P] Configurar `.env` com a variável de ambiente `VITE_API_URL`.
-- [ ] T007 Criar estrutura de diretórios base (`src/components`, `src/pages`, `src/hooks`, `src/services`, `src/stores`, `src/utils`, `src/types`).
+- [X] T007 Criar estrutura de diretórios base (`src/components`, `src/pages`, `src/hooks`, `src/services`, `src/stores`, `src/utils`, `src/types`).
 
 ---
 
 ## Fase 2: Fundacional (Foundational)
 
-- [ ] T008 [P] Criar serviço de API base (`src/services/api/base.ts`) para lidar com requisições HTTP e interceptadores, usando `VITE_API_URL`.
-- [ ] T009 [P] Criar tipo `User` e `AuthResponse` em `src/types/auth.ts`.
-- [ ] T010 [P] Criar store de autenticação com Zustand (`src/stores/authStore.ts`) para gerenciar o estado do usuário logado e token, com persistência via `localStorage`.
-- [ ] T011 [P] Criar hook customizado `useAuth` (`src/hooks/useAuth.ts`) para encapsular a lógica de autenticação.
-- [ ] T012 [P] Criar testes unitários para `src/services/api/base.ts`.
-- [ ] T013 [P] Criar testes unitários para `src/stores/authStore.ts`.
-- [ ] T014 [P] Criar testes unitários para `src/hooks/useAuth.ts`.
+- [X] T008 [P] Criar serviço de API base (`src/services/api/base.ts`) para lidar com requisições HTTP e interceptadores, usando `VITE_API_URL`.
+- [X] T009 [P] Criar tipo `User` e `AuthResponse` em `src/types/auth.ts`.
+- [X] T010 [P] Criar store de autenticação com Zustand (`src/stores/authStore.ts`) para gerenciar o estado do usuário logado e token, com persistência via `localStorage`.
+- [X] T011 [P] Criar hook customizado `useAuth` (`src/hooks/useAuth.ts`) para encapsular a lógica de autenticação.
+- [X] T012 [P] Criar testes unitários para `src/services/api/base.ts`.
+- [X] T013 [P] Criar testes unitários para `src/stores/authStore.ts`.
+- [X] T014 [P] Criar testes unitários para `src/hooks/useAuth.ts`.
 
 ---
 
 ## Fase 3: User Story 1 (P1) - Login de Entregador
 
 - [ ] T015 [US1] Criar componente `LoginPage` (`src/pages/LoginPage.tsx`) com formulário de login (usuário/senha).
-- [ ] T016 [US1] Integrar `LoginPage` com `useAuth` para realizar login.
-- [ ] T017 [US1] Implementar validação de formulário de login e exibição de mensagens de erro.
-- [ ] T018 [US1] Adicionar navegação para o dashboard após login bem-sucedido.
-- [ ] T019 [P] [US1] Criar testes de renderização e comportamento para `src/pages/LoginPage.tsx` (verificar entrada de dados, submissão, exibição de erros).
+- [X] T016 [US1] Integrar `LoginPage` com `useAuth` para realizar login.
+- [X] T017 [US1] Implementar validação de formulário de login e exibição de mensagens de erro.
+- [X] T018 [US1] Adicionar navegação para o dashboard após login bem-sucedido.
+- [X] T019 [P] [US1] Criar testes de renderização e comportamento para `src/pages/LoginPage.tsx` (verificar entrada de dados, submissão, exibição de erros).
 
 ---
 
 ## Fase 4: User Story 1 (P1) - Visualizar Entregas Pendentes
 
-- [ ] T020 [P] [US1] Criar tipo `Delivery` em `src/types/delivery.ts` com atributos como ID, cliente, endereço resumido, status.
-- [ ] T021 [P] [US1] Criar serviço de API para buscar entregas pendentes (`src/services/api/deliveryService.ts`).
-- [ ] T022 [P] [US1] Criar hook customizado `usePendingDeliveries` (`src/hooks/usePendingDeliveries.ts`) para gerenciar o estado da lista de entregas e a lógica de Pull-to-refresh.
-- [ ] T023 [P] [US1] Criar testes unitários para `src/services/api/deliveryService.ts`.
-- [ ] T024 [P] [US1] Criar testes unitários para `src/hooks/usePendingDeliveries.ts`.
-- [ ] T025 [US1] Criar componente `DeliveryListItem` (`src/components/DeliveryListItem.tsx`) para exibir informações sucintas de uma entrega.
-- [ ] T026 [US1] Criar componente `DashboardPage` (`src/pages/DashboardPage.tsx`) que utiliza `usePendingDeliveries` para exibir a lista de `DeliveryListItem`s.
-- [ ] T027 [US1] Implementar funcionalidade de Pull-to-refresh em `DashboardPage` para atualizar a lista.
-- [ ] T028 [US1] Adicionar lógica para exibir "Nenhuma entrega pendente no momento" quando a lista estiver vazia.
-- [ ] T029 [P] [US1] Criar testes de renderização e comportamento para `src/pages/DashboardPage.tsx` (verificar carregamento, exibição de lista/mensagem vazia, Pull-to-refresh).
+- [X] T020 [P] [US1] Criar tipo `Delivery` em `src/types/delivery.ts` com atributos como ID, cliente, endereço resumido, status.
+- [X] T021 [P] [US1] Criar serviço de API para buscar entregas pendentes (`src/services/api/deliveryService.ts`).
+- [X] T022 [P] [US1] Criar hook customizado `usePendingDeliveries` (`src/hooks/usePendingDeliveries.ts`) para gerenciar o estado da lista de entregas e a lógica de Pull-to-refresh.
+- [X] T023 [P] [US1] Criar testes unitários para `src/services/api/deliveryService.ts`.
+- [X] T024 [P] [US1] Criar testes unitários para `src/hooks/usePendingDeliveries.ts`.
+- [X] T025 [US1] Criar componente `DeliveryListItem` (`src/components/DeliveryListItem.tsx`) para exibir informações sucintas de uma entrega.
+- [X] T026 [US1] Criar componente `DashboardPage` (`src/pages/DashboardPage.tsx`) que utiliza `usePendingDeliveries` para exibir a lista de `DeliveryListItem`s.
+- [X] T027 [US1] Implementar funcionalidade de Pull-to-refresh em `DashboardPage` para atualizar a lista.
+- [X] T028 [US1] Adicionar lógica para exibir "Nenhuma entrega pendente no momento" quando a lista estiver vazia.
+- [X] T029 [P] [US1] Criar testes de renderização e comportamento para `src/pages/DashboardPage.tsx` (verificar carregamento, exibição de lista/mensagem vazia, Pull-to-refresh).
 
 ---
 
 ## Fase 5: User Story 1 (P1) - Visualizar Detalhes da Entrega & Abrir Rota no Google Maps
 
-- [ ] T030 [P] [US1] Atualizar tipo `Delivery` (`src/types/delivery.ts`) para incluir endereço completo, nome do cliente e telefone (opcional).
-- [ ] T031 [P] [US1] Adicionar função ao `deliveryService` (`src/services/api/deliveryService.ts`) para buscar detalhes de uma entrega específica por ID.
-- [ ] T032 [P] [US1] Criar hook customizado `useDeliveryDetails` (`src/hooks/useDeliveryDetails.ts`) para gerenciar o estado dos detalhes da entrega.
-- [ ] T033 [P] [US1] Criar testes unitários para a função de detalhes de entrega em `src/services/api/deliveryService.ts`.
-- [ ] T034 [P] [US1] Criar testes unitários para `src/hooks/useDeliveryDetails.ts`.
-- [ ] T035 [US1] Criar componente `DeliveryDetailsPage` (`src/pages/DeliveryDetailsPage.tsx`) que utiliza `useDeliveryDetails` para exibir todos os detalhes da entrega.
-- [ ] T036 [US1] Implementar botão/link "Abrir Rota no Maps" em `DeliveryDetailsPage` que abre o Google Maps com o endereço da entrega.
-- [ ] T037 [US1] Implementar exibição de informações de contato do cliente (nome, telefone clicável).
-- [ ] T038 [US1] Adicionar lógica para copiar o endereço para a área de transferência caso o Google Maps não possa ser aberto.
-- [ ] T039 [P] [US1] Criar testes de renderização e comportamento para `src/pages/DeliveryDetailsPage.tsx` (verificar exibição de detalhes, funcionalidade do botão "Abrir Rota").
+- [X] T030 [P] [US1] Atualizar tipo `Delivery` (`src/types/delivery.ts`) para incluir endereço completo, nome do cliente e telefone (opcional).
+- [X] T031 [P] [US1] Adicionar função ao `deliveryService` (`src/services/api/deliveryService.ts`) para buscar detalhes de uma entrega específica por ID.
+- [X] T032 [P] [US1] Criar hook customizado `useDeliveryDetails` (`src/hooks/useDeliveryDetails.ts`) para gerenciar o estado dos detalhes da entrega.
+- [X] T033 [P] [US1] Criar testes unitários para a função de detalhes de entrega em `src/services/api/deliveryService.ts`.
+- [X] T034 [P] [US1] Criar testes unitários para `src/hooks/useDeliveryDetails.ts`.
+- [X] T035 [US1] Criar componente `DeliveryDetailsPage` (`src/pages/DeliveryDetailsPage.tsx`) que utiliza `useDeliveryDetails` para exibir todos os detalhes da entrega.
+- [X] T036 [US1] Implementar botão/link "Abrir Rota no Maps" em `DeliveryDetailsPage` que abre o Google Maps com o endereço da entrega.
+- [X] T037 [US1] Implementar exibição de informações de contato do cliente (nome, telefone clicável).
+- [X] T038 [US1] Adicionar lógica para copiar o endereço para a área de transferência caso o Google Maps não possa ser aberto.
+- [X] T039 [P] [US1] Criar testes de renderização e comportamento para `src/pages/DeliveryDetailsPage.tsx` (verificar exibição de detalhes, funcionalidade do botão "Abrir Rota").
 
 ---
 
 ## Fase 6: User Story 2 (P2) - Recuperação de Senha (Contato com Suporte)
 
-- [ ] T040 [US2] Criar componente `ForgotPasswordPage` (`src/pages/ForgotPasswordPage.tsx`).
-- [ ] T041 [US2] Implementar interface em `ForgotPasswordPage` para instruir o entregador a contatar o suporte.
-- [ ] T042 [US2] Adicionar link "Esqueci minha senha" na `LoginPage` que redireciona para `ForgotPasswordPage`.
-- [ ] T043 [P] [US2] Criar testes de renderização e comportamento para `src/pages/ForgotPasswordPage.tsx` (verificar exibição das instruções de contato).
+- [X] T040 [US2] Criar componente `ForgotPasswordPage` (`src/pages/ForgotPasswordPage.tsx`).
+- [X] T041 [US2] Implementar interface em `ForgotPasswordPage` para instruir o entregador a contatar o suporte.
+- [X] T042 [US2] Adicionar link "Esqueci minha senha" na `LoginPage` que redireciona para `ForgotPasswordPage`.
+- [X] T043 [P] [US2] Criar testes de renderização e comportamento para `src/pages/ForgotPasswordPage.tsx` (verificar exibição das instruções de contato).
 
 ---
 
 ## Fase 7: User Story 2 (P2) - Ordenação das Entregas (Listagem)
 
-- [ ] T044 [US2] Adicionar funcionalidade de ordenação à `usePendingDeliveries` (`src/hooks/usePendingDeliveries.ts`).
-- [ ] T045 [US2] Integrar opções de ordenação na `DashboardPage` (`src/pages/DashboardPage.tsx`) (ex: por horário, por status).
-- [ ] T046 [P] [US2] Criar testes de comportamento para `src/pages/DashboardPage.tsx` (verificar se a lista é reordenada corretamente).
+- [X] T044 [US2] Adicionar funcionalidade de ordenação à `usePendingDeliveries` (`src/hooks/usePendingDeliveries.ts`).
+- [X] T045 [US2] Integrar opções de ordenação na `DashboardPage` (`src/pages/DashboardPage.tsx`) (ex: por horário, por status).
+- [X] T046 [P] [US2] Criar testes de comportamento para `src/pages/DashboardPage.tsx` (verificar se a lista é reordenada corretamente).
 
 ---
 
 ## Fase 8: User Story 3 (P2) - Visualizar Histórico de Entregas
 
-- [ ] T047 [P] [US3] Criar serviço de API para buscar histórico de entregas (`src/services/api/historyService.ts`).
-- [ ] T048 [P] [US3] Criar hook customizado `useDeliveryHistory` (`src/hooks/useDeliveryHistory.ts`) para gerenciar o estado do histórico de entregas.
-- [ ] T049 [P] [US3] Criar testes unitários para `src/services/api/historyService.ts`.
-- [ ] T050 [P] [US3] Criar testes unitários para `src/hooks/useDeliveryHistory.ts`.
-- [ ] T051 [US3] Criar componente `HistoryPage` (`src/pages/HistoryPage.tsx`) que utiliza `useDeliveryHistory` para exibir a lista de entregas realizadas.
-- [ ] T052 [US3] Implementar exibição de mensagem "Nenhuma entrega realizada ainda" quando o histórico estiver vazio.
-- [ ] T053 [P] [US3] Criar testes de renderização e comportamento para `src/pages/HistoryPage.tsx` (verificar carregamento, exibição de lista/mensagem vazia).
+- [X] T047 [P] [US3] Criar serviço de API para buscar histórico de entregas (`src/services/api/historyService.ts`).
+- [X] T048 [P] [US3] Criar hook customizado `useDeliveryHistory` (`src/hooks/useDeliveryHistory.ts`) para gerenciar o estado do histórico de entregas.
+- [X] T049 [P] [US3] Criar testes unitários para `src/services/api/historyService.ts`.
+- [X] T050 [P] [US3] Criar testes unitários para `src/hooks/useDeliveryHistory.ts`.
+- [X] T051 [US3] Criar componente `HistoryPage` (`src/pages/HistoryPage.tsx`) que utiliza `useDeliveryHistory` para exibir a lista de entregas realizadas.
+- [X] T052 [US3] Implementar exibição de mensagem "Nenhuma entrega realizada ainda" quando o histórico estiver vazio.
+- [X] T053 [P] [US3] Criar testes de renderização e comportamento para `src/pages/HistoryPage.tsx` (verificar carregamento, exibição de lista/mensagem vazia).
 
 ---
 
 ## Fase 9: User Story 2 (P2) - Filtrar/Ordenar Histórico
 
-- [ ] T054 [US2] Adicionar funcionalidade de filtro e ordenação a `useDeliveryHistory` (`src/hooks/useDeliveryHistory.ts`).
-- [ ] T055 [US2] Integrar opções de filtro e ordenação na `HistoryPage` (`src/pages/HistoryPage.tsx`).
-- [ ] T056 [P] [US2] Criar testes de comportamento para `src/pages/HistoryPage.tsx` (verificar se o histórico é filtrado/ordenado corretamente).
+- [X] T054 [US2] Adicionar funcionalidade de filtro e ordenação a `useDeliveryHistory` (`src/hooks/useDeliveryHistory.ts`).
+- [X] T055 [US2] Integrar opções de filtro e ordenação na `HistoryPage` (`src/pages/HistoryPage.tsx`).
+- [X] T056 [P] [US2] Criar testes de comportamento para `src/pages/HistoryPage.tsx` (verificar se o histórico é filtrado/ordenado corretamente).
 
 ---
 
 ## Fase Final: Polish & Cross-Cutting Concerns
 
-- [ ] T057 [P] Implementar layout responsivo e mobile-first para todas as páginas usando TailwindCSS.
-- [ ] T058 [P] Configurar roteamento com React Router (ou equivalente) para as diferentes páginas (`/login`, `/dashboard`, `/details/:id`, `/forgot-password`, `/history`).
-- [ ] T059 [P] Implementar tratamento global de erros (ex: interceptadores de erro na API, Boundary Errors no React).
-- [ ] T060 [P] Revisar e refatorar código para aderência às diretrizes de qualidade (nomenclatura, documentação JSDoc, componentização).
-- [ ] T061 [P] Otimizar desempenho geral do aplicativo (se necessário, após testes de performance).
-- [ ] T062 [P] Garantir acessibilidade (ARIA attributes, semantic HTML) em todos os componentes de UI.
+- [X] T057 [P] Implementar layout responsivo e mobile-first para todas as páginas usando TailwindCSS.
+- [X] T058 [P] Configurar roteamento com React Router (ou equivalente) para as diferentes páginas (`/login`, `/dashboard`, `/details/:id`, `/forgot-password`, `/history`).
+- [X] T059 [P] Implementar tratamento global de erros (ex: interceptadores de erro na API, Boundary Errors no React).
+- [X] T060 [P] Revisar e refatorar código para aderência às diretrizes de qualidade (nomenclatura, documentação JSDoc, componentização).
+- [X] T061 [P] Otimizar desempenho geral do aplicativo (se necessário, após testes de performance).
+- [X] T062 [P] Garantir acessibilidade (ARIA attributes, semantic HTML) em todos os componentes de UI.

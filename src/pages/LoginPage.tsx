@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Assuming React Router for navigation
-import useAuthStore from '../stores/authStore'; // Assuming authStore is available
+import { useNavigate, Link } from 'react-router-dom'; // Assuming React Router for navigation
+import { useAuth } from '../hooks/useAuth';
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const login = useAuthStore((state) => state.login);
+  const { signIn } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -19,17 +19,15 @@ const LoginPage: React.FC = () => {
     }
 
     try {
-      // Assuming login function returns a promise and handles API call
-      await login(username, password);
+      await signIn({ username, password });
       navigate('/dashboard'); // Redirect to dashboard on success
     } catch (err: any) {
-      // Assuming the login function throws an error or returns an error message
       setError(err.message || 'Falha no login. Verifique suas credenciais.');
     }
   };
 
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gray-100 p-4'>
+    <div className='min-h-screen flex items-center justify-center bg-gray-100 p-4 sm:p-8'>
       <div className='bg-white p-8 rounded-lg shadow-lg w-full max-w-sm'>
         <h2 className='text-2xl font-bold text-center mb-6'>Maré Manguinhos - Login</h2>
         <form onSubmit={handleSubmit}>
@@ -72,9 +70,9 @@ const LoginPage: React.FC = () => {
           </div>
         </form>
         <div className='mt-6 text-center text-sm text-gray-500'>
-          <a href='/forgot-password' className='text-blue-500 hover:text-blue-700'>
+          <Link to='/forgot-password' className='text-blue-500 hover:text-blue-700'>
             Esqueci minha senha
-          </a>
+          </Link>
         </div>
       </div>
     </div>
