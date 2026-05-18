@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import { usePendingDeliveries } from '../hooks/usePendingDeliveries';
+import { useDeliveries } from '../hooks/useDeliveries';
 import DeliveryListItem from '../components/DeliveryListItem';
 import { useNavigate } from 'react-router-dom';
 import type { SortBy } from '../types/delivery';
+// import { useAuth } from '../hooks/useAuth'; // Removed useAuth hook import
+import useAuthStore from '../stores/authStore.ts'; // Directly import useAuthStore
 
 type FilterBy = 'all' | 'pending' | 'out-for-delivery'; // Dashboard only shows pending/out-for-delivery
 
 const DashboardPage: React.FC = () => {
   const [sortBy, setSortBy] = useState<SortBy>('none');
   const [filterBy, setFilterBy] = useState<FilterBy>('all');
-  const { deliveries, loading, error, pullToRefresh } = usePendingDeliveries(sortBy, filterBy);
+  const { deliveries, loading, error, pullToRefresh } = useDeliveries(sortBy, filterBy);
   const navigate = useNavigate();
+  // const { signOut } = useAuth(); // Removed call to useAuth hook
 
   const handleDeliveryClick = (deliveryId: string) => {
     navigate(`/details/${deliveryId}`); // Navigate to delivery details page
@@ -27,6 +30,12 @@ const DashboardPage: React.FC = () => {
   // For simplicity, a basic pull-to-refresh UI element (could be a button or a gesture area)
   const handlePullToRefresh = () => {
     pullToRefresh();
+  };
+
+  // Handle logout
+  const handleLogout = async () => {
+    useAuthStore.getState().logout(); // Directly call logout from useAuthStore
+    navigate('/'); // Redirect to login page
   };
 
   if (loading) {
@@ -52,7 +61,15 @@ const DashboardPage: React.FC = () => {
 
   return (
     <div className='min-h-screen bg-gray-100 p-4 sm:p-6'>
-      <h1 className='text-3xl font-bold text-gray-800 mb-6 text-center'>Entregas Pendentes</h1>
+      <div className='flex justify-between items-center mb-6'>
+        <h1 className='text-3xl font-bold text-gray-800'>Entregas Pendentes</h1>
+        <button
+          onClick={handleLogout}
+          className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+        >
+          Sair
+        </button>
+      </div>
 
       <div className='flex flex-wrap justify-center items-center mb-4 px-4 gap-4'>
         <button

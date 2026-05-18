@@ -1,4 +1,5 @@
 import axios from 'axios';
+import useAuthStore from '../../stores/authStore';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -32,6 +33,15 @@ api.interceptors.request.use(
       // 2. Redirect to login if this is meant to be a user-specific token.
       // For now, we allow the request to proceed without the header if the key is missing.
     }
+
+    // Add User ID to headers if available
+    const userId = useAuthStore.getState().user?.id;
+    if (userId) {
+      config.headers['X-User-ID'] = userId;
+    } else {
+      console.warn("User ID not found. 'X-User-ID' header will not be included.");
+    }
+
     return config;
   },
   (error) => {

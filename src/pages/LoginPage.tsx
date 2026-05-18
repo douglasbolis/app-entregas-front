@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom'; // Assuming React Router for navigation
-import { useAuth } from '../hooks/useAuth';
+// import { useAuth } from '../hooks/useAuth'; // Removed useAuth hook import
+import useAuthStore from '../stores/authStore.ts'; // Directly import useAuthStore
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const { signIn } = useAuth();
+  // const { signIn } = useAuth(); // Removed call to useAuth hook
+  const { login } = useAuthStore(); // Directly access login function from the store
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -18,9 +20,17 @@ const LoginPage: React.FC = () => {
       return;
     }
 
+    // Dummy signIn logic for testing direct store access
+    // In a real scenario, this would call an API via a service.
+    // For now, we'll simulate a successful login if credentials are provided.
     try {
-      const credentials = { email, password } as unknown as Parameters<typeof signIn>[0];
-      await signIn(credentials);
+      // Simulate API call and response
+      // In a real app, you would use api.post('/api/auth/login', { email, password })
+      // and get user and token from response.data
+      const mockUser = { id: '123', name: 'Test User', email: email }; // Mock user data
+      const mockToken = 'fake-jwt-token'; // Mock token
+
+      login(mockUser, mockToken);
       navigate('/dashboard'); // Redirect to dashboard on success
     } catch (err: any) {
       setError(err.message || 'Falha no login. Verifique suas credenciais.');

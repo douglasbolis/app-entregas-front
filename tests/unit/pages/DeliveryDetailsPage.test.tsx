@@ -27,7 +27,7 @@ const mockDelivery: Delivery = {
   id: 'delivery-123',
   clientName: 'João da Silva',
   addressSummary: 'Rua Exemplo, 123',
-  fullAddress: 'Rua Exemplo, 123 - Bairro Centro, Cidade - UF, 12345-678',
+  deliveryAddress: 'Rua Exemplo, 123 - Bairro Centro, Cidade - UF, 12345-678',
   clientPhone: '5511987654321',
   status: 'out-for-delivery',
 };
@@ -95,7 +95,7 @@ describe('DeliveryDetailsPage', () => {
 
     await waitFor(() => {
       expect(screen.getByText(mockDelivery.clientName)).toBeInTheDocument();
-      expect(screen.getByText(mockDelivery.fullAddress)).toBeInTheDocument();
+      expect(screen.getByText(mockDelivery.deliveryAddress)).toBeInTheDocument();
       expect(screen.getByText(mockDelivery.clientPhone!)).toBeInTheDocument();
       expect(screen.getByText(/Out For Delivery/i)).toBeInTheDocument();
     });
@@ -156,7 +156,7 @@ describe('DeliveryDetailsPage', () => {
     const openMapsButton = screen.getByRole('button', { name: /abrir rota no maps/i });
     fireEvent.click(openMapsButton);
 
-    const expectedUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mockDelivery.fullAddress)}`;
+    const expectedUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mockDelivery.deliveryAddress)}`;
     expect(window.open).toHaveBeenCalledWith(expectedUrl, '__blank');
   });
 
@@ -173,7 +173,7 @@ describe('DeliveryDetailsPage', () => {
     fireEvent.click(copyAddressButton);
 
     await waitFor(() => {
-      expect(navigator.clipboard.writeText).toHaveBeenCalledWith(mockDelivery.fullAddress);
+      expect(navigator.clipboard.writeText).toHaveBeenCalledWith(mockDelivery.deliveryAddress);
     });
   });
 

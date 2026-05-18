@@ -62,6 +62,39 @@ Como um entregador do Maré Manguinhos, eu quero ter a opção de recuperar minh
 - **FR-008**: O sistema DEVE garantir que a comunicação de credenciais do entregador com o backend seja segura, utilizando HTTPS para transmissão.
 - **FR-009**: O sistema DEVE carregar a chave de autenticação (API Key) a partir de uma variável de ambiente (`VITE_BEARER_TOKEN`) e utilizá-la no header `Authorization: Bearer <key>` em todas as requisições de API, caso a variável esteja definida.
 
+
+### User Story 3 - Logout (Priority: P1)
+
+Como um entregador logado, eu quero ter a opção de sair da minha conta, para que eu possa garantir a segurança dos meus dados e finalizar minha sessão.
+
+**Why this priority**: A funcionalidade de logout é essencial para a segurança da conta do usuário e para o gerenciamento adequado da sessão.
+
+**Independent Test**: Pode ser testado independentemente, verificando se o logout funciona e redireciona corretamente para a tela de login.
+
+**Acceptance Scenarios**:
+
+1. **Given** que o entregador está logado em qualquer tela autenticada, **When** ele clica no botão "Sair", **Then** sua sessão é encerrada e ele é redirecionado para a tela de login.
+2. **Given** que o entregador está logado, **When** ele tenta acessar uma rota protegida após ter feito logout, **Then** ele é redirecionado para a tela de login.
+
+---
+
+## Requirements (mandatory)
+
+### Functional Requirements
+
+- **FR-001**: O sistema DEVE permitir que o entregador se autentique utilizando usuário (e-mail) e senha.
+- **FR-002**: O sistema DEVE validar as credenciais do entregador com o backend.
+- **FR-003**: O sistema DEVE redirecionar o entregador para o dashboard de entregas após login bem-sucedido.
+- **FR-004**: O sistema DEVE exibir mensagens de erro claras para credenciais inválidas ou campos obrigatórios não preenchidos.
+- **FR-005**: O sistema DEVE instruir o entregador a entrar em contato com o suporte para recuperação de senha.
+- **FR-006**: O sistema DEVE exibir uma tela de recuperação de senha com campo para inserção do identificador (e-mail) do entregador.
+- **FR-007**: Ao solicitar recuperação de senha, o sistema DEVE fornecer informações claras sobre como contatar o suporte para obter assistência.
+- **FR-008**: O sistema DEVE garantir que a comunicação de credenciais do entregador com o backend seja segura, utilizando HTTPS para transmissão.
+- **FR-009**: O sistema DEVE carregar a chave de autenticação (API Key) a partir de uma variável de ambiente (`VITE_BEARER_TOKEN`) e utilizá-la no header `Authorization: Bearer <key>` em todas as requisições de API, caso a variável esteja definida.
+- **FR-010**: O sistema DEVE fornecer um botão "Sair" em todas as telas acessíveis após o login.
+- **FR-011**: Ao clicar no botão "Sair", o sistema DEVE encerrar a sessão do usuário (limpar dados de autenticação) e redirecionar para a página de login (`/login`).
+- **FR-010**: O sistema DEVE incluir o ID do entregador (`user.id`) em um header customizado (ex: `X-User-ID`) em todas as requisições de API, obtido do estado de autenticação.
+
 ### Key Entities (include if feature involves data)
 
 - **Entregador**: Representa o usuário do aplicativo, com atributos como ID, usuário (e-mail) e senha (hash).
@@ -75,6 +108,7 @@ Como um entregador do Maré Manguinhos, eu quero ter a opção de recuperar minh
 - **SC-002**: A taxa de sucesso de login de entregadores é de 99%.
 - **SC-003**: Entregadores podem solicitar a recuperação de senha e receber as instruções em até 2 minutos.
 - **SC-004**: A funcionalidade de login deve estar disponível 99.9% do tempo.
+- **SC-005**: A funcionalidade de logout deve ser concluída e o redirecionamento para a página de login ocorrer em menos de 2 segundos.
 
 ## Assumptions
 

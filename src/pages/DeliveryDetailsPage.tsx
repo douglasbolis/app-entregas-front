@@ -1,11 +1,20 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDeliveryDetails } from '../hooks/useDeliveryDetails';
+// import { useAuth } from '../hooks/useAuth'; // Removed useAuth hook import
+import useAuthStore from '../stores/authStore.ts'; // Directly import useAuthStore
 
 const DeliveryDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { delivery, loading, error } = useDeliveryDetails(id || '');
+  // const { signOut } = useAuth(); // Removed call to useAuth hook
+
+  // Handle logout
+  const handleLogout = async () => {
+    useAuthStore.getState().logout(); // Directly call logout from useAuthStore
+    navigate('/'); // Redirect to login page
+  };
 
   if (loading) {
     return (
@@ -45,7 +54,15 @@ const DeliveryDetailsPage: React.FC = () => {
 
   return (
     <div className='min-h-screen bg-gray-100 p-4 sm:p-6'>
-      <h1 className='text-3xl font-bold text-gray-800 mb-6 text-center'>Detalhes da Entrega</h1>
+      <div className='flex justify-between items-center mb-6'>
+        <h1 className='text-3xl font-bold text-gray-800'>Detalhes da Entrega</h1>
+        <button
+          onClick={handleLogout}
+          className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+        >
+          Sair
+        </button>
+      </div>
       <div className='bg-white p-6 sm:p-8 rounded-lg shadow-lg max-w-md mx-auto'>
         <div className='mb-4'>
           <p className='text-gray-700 font-semibold'>Cliente:</p>
@@ -53,7 +70,7 @@ const DeliveryDetailsPage: React.FC = () => {
         </div>
         <div className='mb-4'>
           <p className='text-gray-700 font-semibold'>Endereço:</p>
-          <p className='text-gray-900'>{delivery.fullAddress}</p>
+          <p className='text-gray-900'>{delivery.deliveryAddress}</p>
         </div>
         {delivery.clientPhone && (
           <div className='mb-4'>
@@ -73,7 +90,7 @@ const DeliveryDetailsPage: React.FC = () => {
         </div>
         <button
           onClick={() => {
-            const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(delivery.fullAddress)}`;
+            const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(delivery.deliveryAddress)}`;
             window.open(googleMapsUrl, '__blank');
           }}
           className='mt-4 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full'
@@ -83,8 +100,8 @@ const DeliveryDetailsPage: React.FC = () => {
         <button
           onClick={async () => {
             try {
-              await navigator.clipboard.writeText(delivery.fullAddress);
-              alert('Endereço copiado para a área de transferência!');
+              await navigator.clipboard.writeText(delivery.deliveryAddress);
+              alert(`"${delivery.deliveryAddress}" copiado para a área de transferência!`);
             } catch (err) {
               console.error('Falha ao copiar o endereço:', err);
               alert('Não foi possível copiar o endereço. Por favor, copie manualmente.');

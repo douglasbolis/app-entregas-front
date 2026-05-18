@@ -40,7 +40,10 @@ O MVP inicial se concentrará em:
 - [ ] T005 [P] Instalar dependências de teste: `vitest`, `@testing-library/react`, `@testing-library/jest-dom`.
 - [ ] T006 [P] Configurar `.env` com a variável de ambiente `VITE_API_URL`.
 - [X] T007 Criar estrutura de diretórios base (`src/components`, `src/pages`, `src/hooks`, `src/services`, `src/stores`, `src/utils`, `src/types`).
-- [ ] T063 [P] Configurar a variável de ambiente `VITE_BEARER_TOKEN` no arquivo `.env` (ex: `.env.local`) e garantir que `import.meta.env.VITE_BEARER_TOKEN` esteja acessível no front-end para autenticação com o backend.
+- [ ] T064 [US3] Adicionar botão 'Sair' na `DashboardPage` e implementar a lógica de logout.
+- [ ] T065 [US3] Adicionar botão 'Sair' na `DeliveryDetailsPage` e implementar a lógica de logout.
+- [ ] T066 [US3] Adicionar botão 'Sair' na `HistoryPage` e implementar a lógica de logout.
+- [ ] T068 [US1] Incluir o ID do usuário no header 'X-User-ID' em todas as requisições de API.
 
 ---
 
@@ -136,7 +139,7 @@ O MVP inicial se concentrará em:
 ## Fase Final: Polish & Cross-Cutting Concerns
 
 - [X] T057 [P] Implementar layout responsivo e mobile-first para todas as páginas usando TailwindCSS.
-- [X] T058 [P] Configurar roteamento com React Router (ou equivalente) para as diferentes páginas (`/login`, `/dashboard`, `/details/:id`, `/forgot-password`, `/history`).
+- [X] T058 [P] Configurar roteamento com React Router (ou equivalente) para as diferentes páginas (`/`, `/dashboard`, `/details/:id`, `/forgot-password`, `/history`).
 - [X] T059 [P] Implementar tratamento global de erros (ex: interceptadores de erro na API, Boundary Errors no React).
 - [X] T060 [P] Revisar e refatorar código para aderência às diretrizes de qualidade (nomenclatura, documentação JSDoc, componentização).
 - [X] T061 [P] Otimizar desempenho geral do aplicativo (se necessário, após testes de performance).

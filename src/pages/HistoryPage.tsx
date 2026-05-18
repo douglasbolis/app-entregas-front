@@ -3,6 +3,7 @@ import { useDeliveryHistory } from '../hooks/useDeliveryHistory';
 import DeliveryListItem from '../components/DeliveryListItem';
 import { useNavigate } from 'react-router-dom';
 import type { SortBy } from '../types/delivery';
+import { useAuth } from '../hooks/useAuth'; // Import useAuth hook
 
 type FilterBy = 'all' | 'delivered' | 'address-not-found' | 'client-not-found';
 
@@ -11,6 +12,7 @@ const HistoryPage: React.FC = () => {
   const [filterBy, setFilterBy] = useState<FilterBy>('all');
   const { history, loading, error, fetchDeliveryHistory } = useDeliveryHistory(sortBy, filterBy);
   const navigate = useNavigate();
+  const { signOut } = useAuth(); // Get signOut function from useAuth hook
 
   const handleDeliveryClick = (deliveryId: string) => {
     navigate(`/details/${deliveryId}`); // Assuming details page can also show history details
@@ -26,6 +28,12 @@ const HistoryPage: React.FC = () => {
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFilterBy(event.target.value as FilterBy);
+  };
+
+  // Handle logout
+  const handleLogout = async () => {
+    await signOut();
+    navigate('/'); // Redirect to login page
   };
 
   if (loading) {
@@ -51,7 +59,15 @@ const HistoryPage: React.FC = () => {
 
   return (
     <div className='min-h-screen bg-gray-100 p-4 sm:p-6'>
-      <h1 className='text-3xl font-bold text-gray-800 mb-6 text-center'>Histórico de Entregas</h1>
+      <div className='flex justify-between items-center mb-6'>
+        <h1 className='text-3xl font-bold text-gray-800'>Histórico de Entregas</h1>
+        <button
+          onClick={handleLogout}
+          className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+        >
+          Sair
+        </button>
+      </div>
 
       <div className='flex flex-wrap justify-center items-center mb-4 px-4 sm:px-6 gap-4'>
         <button

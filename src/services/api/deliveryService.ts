@@ -21,6 +21,21 @@ export const deliveryService = {
   },
 
   /**
+   * Fetches a list of all deliveries.
+   * @returns {Promise<Delivery[]>} A promise that resolves to an array of all deliveries.
+   * @throws {Error} If the API call fails.
+   */
+  getAllDeliveries: async (): Promise<Delivery[]> => {
+    try {
+      const response = await api.get<Delivery[]>('/api/deliveries');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching all deliveries:', error);
+      throw new Error('Failed to fetch all deliveries');
+    }
+  },
+
+  /**
    * Fetches the detailed information for a specific delivery by its ID.
    * @param {string} id - The ID of the delivery to fetch.
    * @returns {Promise<Delivery>} A promise that resolves to the detailed delivery object.

@@ -21,12 +21,13 @@
   - Todas as requisições de API incluirão o header `Authorization: Bearer <VITE_BEARER_TOKEN>` quando `VITE_BEARER_TOKEN` estiver definido.
 
 
-## Diretrizes de Qualidade de Código e Melhores Práticas
+## Inclusão do User ID nos Cabeçalhos das Requisições
 
-Todo o código gerado deve seguir as seguintes diretrizes:
-
-1.  **Arquitetura Limpa e Separação de Responsabilidades**: Implementar uma arquitetura limpa, garantindo separação estrita entre UI (componentes visuais), lógica de negócio (hooks customizados, utilitários) e serviços de API (módulos `services/api`).
-2.  **Padrões de Design Atuais do React**: Utilizar componentes funcionais e hooks customizados para encapsular lógicas reutilizáveis. Zustand será usado para gerenciamento de estado global.
+- **Objetivo**: Facilitar a identificação e rastreamento das requisições de API associando-as ao ID do usuário logado.
+- **Implementação**: Adicionar o `user.id` ao header `X-User-ID` em todas as requisições de saída.
+- **Localização da Lógica**: A lógica será implementada no interceptador de requisições do Axios em `src/services/api/base.ts`.
+- **Fonte de Dados**: O `user.id` será obtido do estado global gerenciado pelo Zustand (`useAuthStore`).
+- **Atualizações de Documentação**: Registrar esta alteração em `plan.md`, `tasks.md` e `specs/001-autenticacao-login/spec.md`.
 3.  **Padrões de Nomenclatura Semanticamente Claros**:
     *   **Componentes**: `PascalCase` (ex: `MeuComponente`, `BotaoPrimario`).
     *   **Funções/Variáveis**: `camelCase` (ex: `minhaFuncao`, `valorTotal`).

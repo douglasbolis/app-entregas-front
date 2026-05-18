@@ -15,7 +15,7 @@ const mockDetailedDelivery: Delivery = {
   id: 'delivery-123',
   clientName: 'Client Test',
   addressSummary: '123 Test St',
-  fullAddress: '123 Test St, Test City, TS 12345',
+  deliveryAddress: '123 Test St, Test City, TS 12345',
   clientPhone: '555-0000',
   status: 'pending',
 };

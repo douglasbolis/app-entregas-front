@@ -16,14 +16,14 @@ const mockHistory: Delivery[] = [
     id: 'h1',
     clientName: 'History Client One',
     addressSummary: '789 History Ave',
-    fullAddress: '789 History Ave, Oldtown, USA, 98765',
+    deliveryAddress: '789 History Ave, Oldtown, USA, 98765',
     status: 'delivered',
   },
   {
     id: 'h2',
     clientName: 'History Client Two',
     addressSummary: '321 Past Rd',
-    fullAddress: '321 Past Rd, Oldtown, USA, 98765',
+    deliveryAddress: '321 Past Rd, Oldtown, USA, 98765',
     status: 'delivered',
   },
 ];

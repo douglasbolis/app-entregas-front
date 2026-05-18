@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { useAuth } from '../../../src/hooks/useAuth';
-import { useAuthStore } from '../../../src/stores/authStore';
+import useAuthStore from '../../../src/stores/authStore';
 import api from '../../../src/services/api/base';
 import { User } from '../../../src/types/auth';
 
@@ -48,9 +48,9 @@ describe('useAuth Hook', () => {
     });
 
     expect(api.post).toHaveBeenCalledWith('/auth/login', { username: 'test', password: 'password' });
-    expect(result.current.user).toEqual(MOCK_USER);
-    expect(result.current.token).toBe(MOCK_TOKEN);
-    expect(result.current.isAuthenticated).toBe(true);
+    expect(result.current?.user).toEqual(MOCK_USER);
+    expect(result.current?.token).toBe(MOCK_TOKEN);
+    expect(result.current?.isAuthenticated).toBe(true);
   });
 
   it('should handle sign in failure (API error)', async () => {
