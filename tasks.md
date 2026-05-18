@@ -40,6 +40,7 @@ O MVP inicial se concentrará em:
 - [ ] T005 [P] Instalar dependências de teste: `vitest`, `@testing-library/react`, `@testing-library/jest-dom`.
 - [ ] T006 [P] Configurar `.env` com a variável de ambiente `API_URL`.
 - [X] T007 Criar estrutura de diretórios base (`src/components`, `src/pages`, `src/hooks`, `src/services`, `src/stores`, `src/utils`, `src/types`).
+- [ ] T063 [P] Configurar a variável de ambiente `BEARER_TOKEN` no arquivo `.env` (ex: `.env.local`) e garantir que `import.meta.env.BEARER_TOKEN` esteja acessível no front-end para autenticação com o backend.
 
 ---
 

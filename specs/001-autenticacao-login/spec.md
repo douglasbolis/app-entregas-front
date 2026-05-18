@@ -60,6 +60,7 @@ Como um entregador do Maré Manguinhos, eu quero ter a opção de recuperar minh
 - **FR-006**: O sistema DEVE exibir uma tela de recuperação de senha com campo para inserção do identificador (e-mail ou CPF) do entregador.
 - **FR-007**: Ao solicitar recuperação de senha, o sistema DEVE fornecer informações claras sobre como contatar o suporte para obter assistência.
 - **FR-008**: O sistema DEVE garantir que a comunicação de credenciais do entregador com o backend seja segura, utilizando HTTPS para transmissão.
+- **FR-009**: O sistema DEVE carregar a chave de autenticação (API Key) a partir de uma variável de ambiente (`BEARER_TOKEN`) e utilizá-la no header `Authorization: Bearer <key>` em todas as requisições de API, caso a variável esteja definida.
 
 ### Key Entities (include if feature involves data)
 

@@ -15,6 +15,11 @@
 - Variável de Ambiente: `API_URL` para a URL do backend
 - Isolamento de chamadas de API em `services/api`
 
+- **Gerenciamento de Variáveis de Ambiente e Segurança**:
+  - API Keys e URLs de serviços serão gerenciados via variáveis de ambiente usando o sistema de `dotenv` integrado ao Vite (`import.meta.env`).
+  - A chave de autenticação (`BEARER_TOKEN`) e a URL base da API (`API_URL`) devem ser configuradas em arquivos `.env` (ex: `.env.local`) e garantidas como não commitadas.
+  - Todas as requisições de API incluirão o header `Authorization: Bearer <BEARER_TOKEN>` quando `BEARER_TOKEN` estiver definido.
+
 
 ## Diretrizes de Qualidade de Código e Melhores Práticas
 
