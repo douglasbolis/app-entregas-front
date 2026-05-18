@@ -12,7 +12,7 @@
 
 ## API
 - Consumo de API REST externa
-- Variável de Ambiente: `VITE_API_URL` para a URL do backend
+- Variável de Ambiente: `API_URL` para a URL do backend
 - Isolamento de chamadas de API em `services/api`
 
 

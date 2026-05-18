@@ -32,7 +32,7 @@ describe('API Service', () => {
   afterAll(() => server.close());
 
   it('should have the correct base URL', () => {
-    expect(api.defaults.baseURL).toBe(import.meta.env.VITE_API_URL);
+    expect(api.defaults.baseURL).toBe(import.meta.env.API_URL);
   });
 
   it('should add Authorization header if token exists in localStorage', async () => {
