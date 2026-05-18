@@ -30,7 +30,7 @@ const LoginPage: React.FC = () => {
       const mockUser = { id: '123', name: 'Test User', email: email }; // Mock user data
       const mockToken = 'fake-jwt-token'; // Mock token
 
-      login(mockUser, mockToken);
+      login(mockUser as any, mockToken);
       navigate('/dashboard'); // Redirect to dashboard on success
     } catch (err: any) {
       setError(err.message || 'Falha no login. Verifique suas credenciais.');
