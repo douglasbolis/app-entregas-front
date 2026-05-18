@@ -12,7 +12,7 @@ export const deliveryService = {
    */
   getPendingDeliveries: async (): Promise<Delivery[]> => {
     try {
-      const response = await api.get<Delivery[]>('/deliveries/pending');
+      const response = await api.get<Delivery[]>('/api/deliveries/pending');
       return response.data;
     } catch (error) {
       console.error('Error fetching pending deliveries:', error);
@@ -28,7 +28,7 @@ export const deliveryService = {
    */
   getDeliveryDetails: async (id: string): Promise<Delivery> => {
     try {
-      const response = await api.get<Delivery>(`/deliveries/${id}`);
+      const response = await api.get<Delivery>(`/api/deliveries/${id}`);
       return response.data;
     } catch (error) {
       console.error(`Error fetching delivery details for ID ${id}:`, error);

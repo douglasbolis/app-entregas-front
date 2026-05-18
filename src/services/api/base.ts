@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.API_URL;
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 /**
  * Base Axios instance for API communication.
@@ -19,14 +19,14 @@ const api = axios.create({
  */
 api.interceptors.request.use(
   (config) => {
-    // API_URL is correctly handled via import.meta.env.API_URL.
-    // The API Key is loaded from the environment variable BEARER_TOKEN.
-    // Ensure BEARER_TOKEN is set in your .env file (e.g., .env.local).
-    const apiKey = import.meta.env.BEARER_TOKEN;
+    // VITE_API_URL is correctly handled via import.meta.env.VITE_API_URL.
+    // The API Key is loaded from the environment variable VITE_BEARER_TOKEN.
+    // Ensure VITE_BEARER_TOKEN is set in your .env file (e.g., .env.local).
+    const apiKey = import.meta.env.VITE_BEARER_TOKEN;
     if (apiKey) {
       config.headers.Authorization = `Bearer ${apiKey}`;
     } else {
-      console.warn("BEARER_TOKEN environment variable not set. Authorization header will not be included.");
+      console.warn("VITE_BEARER_TOKEN environment variable not set. Authorization header will not be included.");
       // Depending on the backend's requirements, you might want to:
       // 1. Throw an error to prevent the request.
       // 2. Redirect to login if this is meant to be a user-specific token.

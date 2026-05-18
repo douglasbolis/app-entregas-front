@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom'; // Assuming React Router f
 import { useAuth } from '../hooks/useAuth';
 
 const LoginPage: React.FC = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { signIn } = useAuth();
@@ -13,13 +13,14 @@ const LoginPage: React.FC = () => {
     event.preventDefault();
     setError(''); // Clear previous errors
 
-    if (!username || !password) {
+    if (!email || !password) {
       setError('Por favor, preencha todos os campos.');
       return;
     }
 
     try {
-      await signIn({ username, password });
+      const credentials = { email, password } as unknown as Parameters<typeof signIn>[0];
+      await signIn(credentials);
       navigate('/dashboard'); // Redirect to dashboard on success
     } catch (err: any) {
       setError(err.message || 'Falha no login. Verifique suas credenciais.');
@@ -32,16 +33,16 @@ const LoginPage: React.FC = () => {
         <h2 className='text-2xl font-bold text-center mb-6'>Entregas Maré Manguinhos</h2>
         <form onSubmit={handleSubmit}>
           <div className='mb-4'>
-            <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='username'>
-              Usuário (E-mail ou CPF)
+            <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='email'>
+              E-mail
             </label>
             <input
               className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-              id='username'
+              id='email'
               type='text'
-              placeholder='Seu usuário'
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              placeholder='Seu e-mail'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className='mb-6'>

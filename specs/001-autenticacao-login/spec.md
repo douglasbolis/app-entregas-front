@@ -52,19 +52,19 @@ Como um entregador do Maré Manguinhos, eu quero ter a opção de recuperar minh
 
 ### Functional Requirements
 
-- **FR-001**: O sistema DEVE permitir que o entregador se autentique utilizando usuário (e-mail ou CPF) e senha.
+- **FR-001**: O sistema DEVE permitir que o entregador se autentique utilizando usuário (e-mail) e senha.
 - **FR-002**: O sistema DEVE validar as credenciais do entregador com o backend.
 - **FR-003**: O sistema DEVE redirecionar o entregador para o dashboard de entregas após login bem-sucedido.
 - **FR-004**: O sistema DEVE exibir mensagens de erro claras para credenciais inválidas ou campos obrigatórios não preenchidos.
 - **FR-005**: O sistema DEVE instruir o entregador a entrar em contato com o suporte para recuperação de senha.
-- **FR-006**: O sistema DEVE exibir uma tela de recuperação de senha com campo para inserção do identificador (e-mail ou CPF) do entregador.
+- **FR-006**: O sistema DEVE exibir uma tela de recuperação de senha com campo para inserção do identificador (e-mail) do entregador.
 - **FR-007**: Ao solicitar recuperação de senha, o sistema DEVE fornecer informações claras sobre como contatar o suporte para obter assistência.
 - **FR-008**: O sistema DEVE garantir que a comunicação de credenciais do entregador com o backend seja segura, utilizando HTTPS para transmissão.
-- **FR-009**: O sistema DEVE carregar a chave de autenticação (API Key) a partir de uma variável de ambiente (`BEARER_TOKEN`) e utilizá-la no header `Authorization: Bearer <key>` em todas as requisições de API, caso a variável esteja definida.
+- **FR-009**: O sistema DEVE carregar a chave de autenticação (API Key) a partir de uma variável de ambiente (`VITE_BEARER_TOKEN`) e utilizá-la no header `Authorization: Bearer <key>` em todas as requisições de API, caso a variável esteja definida.
 
 ### Key Entities (include if feature involves data)
 
-- **Entregador**: Representa o usuário do aplicativo, com atributos como ID, usuário (e-mail ou CPF) e senha (hash).
+- **Entregador**: Representa o usuário do aplicativo, com atributos como ID, usuário (e-mail) e senha (hash).
 - **Sessão**: Representa o estado de autenticação do entregador, incluindo token de acesso e tempo de expiração.
 
 ## Success Criteria (mandatory)

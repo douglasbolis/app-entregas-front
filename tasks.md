@@ -38,15 +38,15 @@ O MVP inicial se concentrará em:
 - [ ] T003 Instalar dependências de gerenciamento de estado (Zustand).
 - [ ] T004 Instalar dependências de persistência de dados (localStorage, se necessário alguma lib específica ou abstração).
 - [ ] T005 [P] Instalar dependências de teste: `vitest`, `@testing-library/react`, `@testing-library/jest-dom`.
-- [ ] T006 [P] Configurar `.env` com a variável de ambiente `API_URL`.
+- [ ] T006 [P] Configurar `.env` com a variável de ambiente `VITE_API_URL`.
 - [X] T007 Criar estrutura de diretórios base (`src/components`, `src/pages`, `src/hooks`, `src/services`, `src/stores`, `src/utils`, `src/types`).
-- [ ] T063 [P] Configurar a variável de ambiente `BEARER_TOKEN` no arquivo `.env` (ex: `.env.local`) e garantir que `import.meta.env.BEARER_TOKEN` esteja acessível no front-end para autenticação com o backend.
+- [ ] T063 [P] Configurar a variável de ambiente `VITE_BEARER_TOKEN` no arquivo `.env` (ex: `.env.local`) e garantir que `import.meta.env.VITE_BEARER_TOKEN` esteja acessível no front-end para autenticação com o backend.
 
 ---
 
 ## Fase 2: Fundacional (Foundational)
 
-- [X] T008 [P] Criar serviço de API base (`src/services/api/base.ts`) para lidar com requisições HTTP e interceptadores, usando `API_URL`.
+- [X] T008 [P] Criar serviço de API base (`src/services/api/base.ts`) para lidar com requisições HTTP e interceptadores, usando `VITE_API_URL`.
 - [X] T009 [P] Criar tipo `User` e `AuthResponse` em `src/types/auth.ts`.
 - [X] T010 [P] Criar store de autenticação com Zustand (`src/stores/authStore.ts`) para gerenciar o estado do usuário logado e token, com persistência via `localStorage`.
 - [X] T011 [P] Criar hook customizado `useAuth` (`src/hooks/useAuth.ts`) para encapsular a lógica de autenticação.

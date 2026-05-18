@@ -23,5 +23,5 @@ const localStorageMock = (
 
 Object.defineProperty(global, 'localStorage', { value: localStorageMock });
 
-// Mock import.meta.env.API_URL for tests
-vi.stubEnv('API_URL', 'http://localhost:3000/api');
+// Mock import.meta.env.VITE_API_URL for tests
+vi.stubEnv('VITE_API_URL', 'http://localhost:3000/api');

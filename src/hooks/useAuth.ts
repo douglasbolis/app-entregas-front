@@ -12,7 +12,7 @@ export function useAuth() {
 
   const signIn = async (credentials: AuthCredentials) => {
     try {
-      const response = await api.post<AuthResponse>('/auth/login', credentials);
+      const response = await api.post<AuthResponse>('/api/auth/login', credentials);
       const { user, token } = response.data;
       login(user, token);
       return true;
