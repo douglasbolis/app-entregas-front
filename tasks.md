@@ -12,6 +12,7 @@ As User Stories devem ser implementadas na seguinte ordem para garantir um fluxo
 7.  **US1 (P1) - Abrir Rota no Google Maps**: Depende do detalhe da entrega.
 8.  **US1 (P1) - Visualizar Histórico de Entregas**: Depende do login e da conclusão de entregas.
 9.  **US2 (P2) - Filtrar/Ordenar Histórico**: Depende da visualização do histórico.
+10. **US4 (P1) - Atualizar Status da Entrega**: Depende da visualização de detalhes da entrega.
 
 ## Exemplos de Execução Paralela
 *   **Setup e Configuração Inicial**: Muitas tarefas da Fase 1 e 2 podem ser executadas em paralelo por diferentes desenvolvedores (ex: configuração do ambiente, criação da estrutura básica, instalação de dependências de teste).
@@ -144,3 +145,11 @@ O MVP inicial se concentrará em:
 - [X] T060 [P] Revisar e refatorar código para aderência às diretrizes de qualidade (nomenclatura, documentação JSDoc, componentização).
 - [X] T061 [P] Otimizar desempenho geral do aplicativo (se necessário, após testes de performance).
 - [X] T062 [P] Garantir acessibilidade (ARIA attributes, semantic HTML) em todos os componentes de UI.
+
+## Fase 10: Implementação de Movimentação de Status de Entrega
+
+- [ ] T067 [US4] Implementar seletor de status na `DeliveryDetailsPage.tsx`.
+- [ ] T069 [US4] Adicionar chamada de API no `deliveryService.ts` para atualizar o status da entrega.
+- [ ] T070 [US4] Atualizar a UI da `DeliveryDetailsPage.tsx` após a confirmação da atualização do status.
+- [ ] T071 [US4] Adicionar testes unitários para a funcionalidade de atualização de status em `DeliveryDetailsPage.tsx`.
+- [ ] T072 [US4] Atualizar `deliveryService.test.ts` se necessário para cobrir o novo endpoint.

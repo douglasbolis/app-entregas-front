@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { useDeliveryHistory } from '../hooks/useDeliveryHistory';
 import DeliveryListItem from '../components/DeliveryListItem';
 import { useNavigate } from 'react-router-dom';
-import type { SortBy } from '../types/delivery';
+import type { FilterBy, SortBy } from '../types/delivery';
 import { useAuth } from '../hooks/useAuth'; // Import useAuth hook
-
-type FilterBy = 'all' | 'delivered' | 'address-not-found' | 'client-not-found';
 
 const HistoryPage: React.FC = () => {
   const [sortBy, setSortBy] = useState<SortBy>('none');
-  const [filterBy, setFilterBy] = useState<FilterBy>('all');
+  const [filterBy, setFilterBy] = useState<FilterBy>('TODAS');
   const { history, loading, error, fetchDeliveryHistory } = useDeliveryHistory(sortBy, filterBy);
   const navigate = useNavigate();
   const { signOut } = useAuth(); // Get signOut function from useAuth hook
@@ -99,10 +97,10 @@ const HistoryPage: React.FC = () => {
             onChange={handleFilterChange}
             className='block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm'
           >
-            <option value='all'>Todos</option>
-            <option value='delivered'>Entregue</option>
-            <option value='address-not-found'>Endereço Não Encontrado</option>
-            <option value='client-not-found'>Cliente Não Encontrado</option>
+            <option value='TODAS'>Todos</option>
+            <option value='ENTREGUE'>Entregue</option>
+            <option value='ENDERECO_NAO_ENCONTRADO'>Endereço Não Encontrado</option>
+            <option value='CLIENTE_NAO_ENCONTRADO'>Cliente Não Encontrado</option>
           </select>
         </div>
       </div>

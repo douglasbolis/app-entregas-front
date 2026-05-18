@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { useDeliveries } from '../hooks/useDeliveries';
 import DeliveryListItem from '../components/DeliveryListItem';
 import { useNavigate } from 'react-router-dom';
-import type { SortBy } from '../types/delivery';
+import type { FilterBy, SortBy } from '../types/delivery';
 // import { useAuth } from '../hooks/useAuth'; // Removed useAuth hook import
 import useAuthStore from '../stores/authStore.ts'; // Directly import useAuthStore
 
-type FilterBy = 'all' | 'pending' | 'out-for-delivery'; // Dashboard only shows pending/out-for-delivery
-
 const DashboardPage: React.FC = () => {
   const [sortBy, setSortBy] = useState<SortBy>('none');
-  const [filterBy, setFilterBy] = useState<FilterBy>('all');
+  const [filterBy, setFilterBy] = useState<FilterBy>('TODAS');
   const { deliveries, loading, error, pullToRefresh } = useDeliveries(sortBy, filterBy);
   const navigate = useNavigate();
   // const { signOut } = useAuth(); // Removed call to useAuth hook
@@ -99,9 +97,9 @@ const DashboardPage: React.FC = () => {
             onChange={handleFilterChange}
             className='block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm'
           >
-            <option value='all'>Todos</option>
-            <option value='pending'>Pendente</option>
-            <option value='out-for-delivery'>Saiu para entrega</option>
+            <option value='TODAS'>Todos</option>
+            <option value='PENDENTE'>Pendente</option>
+            <option value='SAIU_PARA_ENTREGA'>Saiu para entrega</option>
           </select>
         </div>
       </div>

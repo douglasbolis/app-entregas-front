@@ -1,16 +1,14 @@
 import { useState, useEffect, useCallback } from 'react';
 import { historyService } from '../services/api/historyService';
-import type { Delivery, SortBy } from '../types/delivery';
+import type { Delivery, FilterBy, SortBy } from '../types/delivery';
 
-type FilterBy = 'all' | 'delivered' | 'address-not-found' | 'client-not-found'; // Example filtering options
-
-export function useDeliveryHistory(sortBy: SortBy = 'none', filterBy: FilterBy = 'all') {
+export function useDeliveryHistory(sortBy: SortBy = 'none', filterBy: FilterBy = 'TODAS') {
   const [history, setHistory] = useState<Delivery[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const filterHistory = useCallback((historyToFilter: Delivery[]): Delivery[] => {
-    if (filterBy === 'all') return historyToFilter;
+    if (filterBy === 'TODAS') return historyToFilter;
     return historyToFilter.filter(delivery => delivery.status === filterBy);
   }, [filterBy]);
 

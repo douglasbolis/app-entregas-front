@@ -46,3 +46,17 @@ O projeto deve seguir a seguinte estratégia de testes automatizados:
     *   `vitest`
     *   `@testing-library/react`
     *   `@testing-library/jest-dom`
+
+## Implementação de Movimentação de Status de Entrega
+
+-   **Objetivo**: Permitir que entregadores atualizem o status de uma entrega diretamente da tela de detalhes.
+-   **Frontend**:
+    -   Modificar `DeliveryDetailsPage.tsx` para incluir um seletor (dropdown/botões) para status.
+    -   Integrar com `deliveryService.ts` para chamar o endpoint de atualização.
+    -   Atualizar a exibição do status na tela de detalhes após a confirmação.
+-   **Backend Integration**:
+    -   Garantir que `deliveryService.ts` possua um método para atualizar o status da entrega.
+    -   Verificar se o endpoint de atualização na API suporta a modificação do status e valida as transições.
+-   **Testes**:
+    -   Adicionar testes unitários para `DeliveryDetailsPage.tsx` cobrindo a atualização de status.
+    -   Atualizar `deliveryService.test.ts` se necessário.

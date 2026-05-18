@@ -29,14 +29,12 @@ const mockDelivery: Delivery = {
   addressSummary: 'Rua Exemplo, 123',
   deliveryAddress: 'Rua Exemplo, 123 - Bairro Centro, Cidade - UF, 12345-678',
   clientPhone: '5511987654321',
-  status: 'out-for-delivery',
+  status: 'SAIU_PARA_ENTREGA',
 };
 
 describe('DeliveryDetailsPage', () => {
   const originalWindowOpen = window.open;
   const originalClipboard = navigator.clipboard;
-
-
 
   beforeEach(() => {
     vi.clearAllMocks();

@@ -1,4 +1,4 @@
-import type { Delivery } from '../../types/delivery';
+import type { Delivery, DeliveryStatus } from '../../types/delivery';
 import api from './base';
 
 /**
@@ -48,6 +48,24 @@ export const deliveryService = {
     } catch (error) {
       console.error(`Error fetching delivery details for ID ${id}:`, error);
       throw new Error(`Failed to fetch delivery details for ID ${id}`);
+    }
+  },
+
+  /**
+   * Updates the status of a specific delivery.
+   * @param {string} deliveryId - The ID of the delivery to update.
+   * @param {DeliveryStatus} newStatus - The new status for the delivery.
+   * @returns {Promise<Delivery>} A promise that resolves to the updated delivery object.
+   * @throws {Error} If the API call fails.
+   */
+  updateDeliveryStatus: async (deliveryId: string, newStatus: DeliveryStatus): Promise<Delivery> => {
+    try {
+      const response = await api.patch<Delivery>(`/api/deliveries/${deliveryId}/status`, { status: newStatus });
+      return response.data;
+    } catch (error: any) {
+      console.error(`Error updating status for delivery ID ${deliveryId} to ${newStatus}:`, error);
+      const errorMessage = error.response?.data?.message || error.message || 'An unknown error occurred';
+      throw new Error(`Failed to update delivery status: ${errorMessage}`);
     }
   },
 };

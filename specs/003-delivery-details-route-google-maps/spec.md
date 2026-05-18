@@ -93,3 +93,37 @@ Como um entregador, eu quero ter acesso às informações do cliente (ex: nome e
 - O aplicativo principal (front-end) é capaz de invocar aplicativos externos como o Google Maps.
 - O Google Maps estará disponível e instalado na maioria dos dispositivos dos entregadores.
 - A API do Google Maps para geocodificação ou abertura de rotas não exige autenticação específica do usuário final para esta funcionalidade básica (ou será tratada pelo sistema operacional/app do Google Maps).
+
+## Status Management
+
+### User Story 4 - Atualizar Status da Entrega (Priority: P1)
+
+Como um entregador, eu quero poder atualizar o status de uma entrega diretamente da tela de detalhes (ex: "Saiu para entrega", "Entregue", "Endereço não encontrado"), para que o sistema reflita o progú o mais preciso possível do andamento da entrega.
+
+**Why this priority**: Manter o status da entrega atualizado é crucial para o acompanhamento do fluxo logístico e para a comunicação com a plataforma/gerência.
+
+**Independent Test**: Pode ser testado selecionando um novo status, confirmando a ação e verificando se o status é atualizado na tela de detalhes e na lista de entregas (se aplicável).
+
+**Acceptance Scenarios**:
+
+1. **Given** que o entregador está visualizando os detalhes de uma entrega, **When** ele seleciona um novo status válido (ex: "Saiu para entrega") em um seletor/botão, **Then** a tela de detalhes é atualizada para exibir o novo status, e o backend é notificado da mudança.
+2. **Given** que o entregador está visualizando os detalhes de uma entrega, **When** ele tenta atualizar o status para um estado inválido ou em conflito com o fluxo (ex: marcar como "Entregue" antes de "Saiu para entrega"), **Then** uma mensagem de erro apropriada é exibida, e o status não é alterado.
+3. **Given** que o entregador está visualizando os detalhes de uma entrega, **When** ele atualiza o status, **Then** a requisição para o endpoint de atualização de status é enviada com o novo status da entrega.
+
+### Functional Requirements
+
+- **FR-007**: O sistema DEVE exibir um controle (dropdown, botões) na tela de detalhes da entrega para permitir a seleção de um novo status.
+- **FR-008**: O sistema DEVE validar as transições de status permitidas (ex: "Saiu para entrega" pode seguir para "Entregue" ou "Endereço não encontrado", mas não voltar para "Não iniciada").
+- **FR-009**: Ao selecionar um novo status, o sistema DEVE enviar uma requisição ao endpoint de atualização de entrega, contendo o ID da entrega e o novo status.
+- **FR-010**: Após a confirmação bem-sucedida da atualização pelo backend, o status da entrega DEVE ser atualizado na tela de detalhes.
+
+### Key Entities
+
+- **Entrega**: Atributos chave adicionais incluem:
+    - `status`: Enumeração ou string representando o estado atual da entrega (ex: 'PENDENTE', 'EM_TRANSITO', 'ENTREGUE', 'NAO_ENCONTRADO', 'CLIENTE_NAO_ENCONTRADO', 'CANCELADA').
+    - `status_options`: (Opcional, se a lógica de transição for exibida no front) Uma lista de status válidos para transição a partir do estado atual.
+
+### Success Criteria
+
+- **SC-005**: Entregadores conseguem atualizar o status de uma entrega em menos de 3 segundos após a confirmação da ação.
+- **SC-006**: As atualizações de status são refletidas na interface do usuário e confirmadas pelo backend em mais de 99.5% das tentativas.
